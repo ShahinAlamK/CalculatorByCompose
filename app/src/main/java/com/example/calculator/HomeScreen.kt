@@ -1,6 +1,7 @@
 package com.example.calculator
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -284,12 +285,16 @@ fun HomeScreen() {
 
 @Composable
 fun CalButton(
-    modifier: Modifier = Modifier, label: String, color: Color = Color.Gray
+    modifier: Modifier = Modifier,
+    label: String,
+    color: Color = Color.Gray,
+    onClick: () -> Unit = {}
 ) {
     Box(
         modifier = modifier
             .clip(MaterialTheme.shapes.small)
-            .background(color.copy(alpha = 0.2f)),
+            .background(color.copy(alpha = 0.2f))
+            .clickable { onClick() },
         contentAlignment = Alignment.Center
     ) {
         Text(text = label, fontSize = 24.sp, fontWeight = FontWeight.Bold)
